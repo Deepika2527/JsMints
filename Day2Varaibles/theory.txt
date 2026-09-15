@@ -1,0 +1,4 @@
+Declaration      → Creating the variable
+Initialization   → Giving it its first value
+Re-declaration   → Declaring the same variable again
+Re-assignment    → Giving an existing variable a new value
