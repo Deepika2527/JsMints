@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ForLoop exiperiments</title>
+  </head>
+  <body>
+    <h1>Experiments with the for loop</h1>
+
+    <script>
+      //Initialization outside
+
+      let i = 1;
+
+      for (; i <= 5; i++) {
+        console.log(i);
+      }
+      console.log("*****************");
+
+      //Update outside-You can also remove the update from the for statement.
+
+      for (let a = 1; a <= 5; ) {
+        console.log(a);
+        a++;
+      }
+      console.log("*****************");
+
+      //Initialization AND update outside
+      let k = 1;
+
+      for (; k <= 5; ) {
+        console.log(k);
+        k++;
+      }
+      //this works like while loop-
+      // while (i <= 5) {
+      //     console.log(i);
+      //     i++;
+      // }
+
+      console.log("*****************");
+      //Condition outside — your experiment
+      //       let i1 = 1;
+
+      // i1 <= 5;
+
+      // for (;;) {
+      //     console.log(i1);
+      //     i1++;
+      // }
+      //infinite loop
+      //       is NOT connected to the loop.
+      // It is evaluated once and discarded.
+
+      //but if we assing the conidition to another varaible then it works
+    //   let x = 10;
+
+    //   let condition = x <= 20;
+
+    //   for (; condition; x++) {
+    //     console.log(x);
+    //   }
+
+      console.log("*****************");
+      console.log("*****************");
+      console.log("*****************");
+      console.log("*****************");
+      console.log("*****************");
+      console.log("*****************");
+      console.log("*****************");
+      console.log("*****************");
+    </script>
+  </body>
+</html>

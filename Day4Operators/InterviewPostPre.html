@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //Q1
+      let count = 7;
+      let total = count++;
+console.log("Q1");
+      console.log(count); //8
+      console.log(total); //7
+      //Q2
+
+     let marks = 4;
+console.log("Q2");
+console.log(++marks); //5
+console.log(marks++); //5
+console.log(marks); //6
+
+//Q3
+
+let num = 8;
+
+let answer = num++ + ++num;
+console.log("Q3");
+
+console.log(answer); //18
+console.log(num);  //10
+//Q4
+console.log("Q4");
+let score = 3;
+
+let result = ++score + score++ + ++score;
+
+console.log(result); //14
+console.log(score);   //6
+
+//Q5
+console.log("Q5");
+let points = 6;
+
+console.log(points++ + points++ + ++points); //22
+//Q6
+console.log("Q6");
+let value = 4;
+
+let output = value++ + ++value * value++;
+// 4 + 6 * 6
+console.log(output);  40
+console.log(value); 7
+
+//Q7
+console.log("Q7");
+let balance = 8;
+
+balance = balance++ + ++balance;
+
+console.log(balance); //18
+//Q8
+console.log("Q8");
+let age = 20;
+
+function check(first, second) {
+    console.log(first); //20
+    console.log(second); //22
+}
+
+check(age++, ++age);
+
+console.log(age);
+//Q9
+console.log("Q9");
+let numbers = [15, 25, 35];
+
+let index = 0;
+
+console.log(numbers[index++]); //15
+console.log(numbers[++index]); //35
+console.log(index);//2
+//Q10
+console.log("Q10");
+let counter = 2;
+
+let finalValue = counter++ + counter++ + ++counter + counter++;
+//                  2+ 3+5+5 
+console.log(finalValue); //15
+console.log(counter);  //6
+    </script>
+  </body>
+</html>

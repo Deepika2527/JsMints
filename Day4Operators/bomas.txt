@@ -1,0 +1,451 @@
+# JavaScript Operator Precedence (BODMAS)
+
+## 1. What is Operator Precedence?
+
+**Operator precedence** determines the order in which JavaScript evaluates operators in an expression.
+
+In mathematics, we commonly use **BODMAS** to remember the order of operations.
+
+JavaScript also follows an order of precedence for operators.
+
+### Example
+
+```javascript
+console.log(10 + 5 * 2);
+```
+
+Many beginners may calculate:
+
+```text
+10 + 5 = 15
+15 * 2 = 30
+```
+
+But JavaScript evaluates multiplication first:
+
+```text
+5 * 2 = 10
+10 + 10 = 20
+```
+
+Therefore:
+
+```javascript
+console.log(10 + 5 * 2);
+// 20
+```
+
+---
+
+# 2. Basic Order of Arithmetic Operators
+
+For the arithmetic operators we are learning, remember this order:
+
+```text
+Highest Priority
+       ↓
+
+( )       Parentheses
+       ↓
+**        Exponentiation
+       ↓
+* / %     Multiplication / Division / Remainder
+       ↓
++ -       Addition / Subtraction
+
+       ↓
+Lowest Priority
+```
+
+### Easy way to remember
+
+```text
+( )
+**
+* / %
++ -
+```
+
+---
+
+# 3. Parentheses `( )`
+
+Parentheses have higher precedence and can be used to explicitly control the order of evaluation.
+
+### Without parentheses
+
+```javascript
+console.log(10 + 5 * 2);
+```
+
+First:
+
+```text
+5 * 2 = 10
+```
+
+Then:
+
+```text
+10 + 10 = 20
+```
+
+Output:
+
+```text
+20
+```
+
+### With parentheses
+
+```javascript
+console.log((10 + 5) * 2);
+```
+
+First:
+
+```text
+10 + 5 = 15
+```
+
+Then:
+
+```text
+15 * 2 = 30
+```
+
+Output:
+
+```text
+30
+```
+
+### Key point
+
+> Parentheses can be used to change the normal order of evaluation.
+
+---
+
+# 4. Exponentiation `**`
+
+Exponentiation has higher precedence than multiplication, division, remainder, addition, and subtraction.
+
+```javascript
+console.log(2 + 3 * 4 ** 2);
+```
+
+Step 1:
+
+```text
+4 ** 2 = 16
+```
+
+Step 2:
+
+```text
+3 * 16 = 48
+```
+
+Step 3:
+
+```text
+2 + 48 = 50
+```
+
+Output:
+
+```text
+50
+```
+
+---
+
+# 5. Multiplication, Division and Remainder
+
+The following operators have the same precedence:
+
+```text
+*    /    %
+```
+
+When operators have the same precedence, these arithmetic operators are evaluated **from left to right**.
+
+### Example
+
+```javascript
+console.log(20 / 5 * 2);
+```
+
+First:
+
+```text
+20 / 5 = 4
+```
+
+Then:
+
+```text
+4 * 2 = 8
+```
+
+Output:
+
+```text
+8
+```
+
+### Important
+
+Do NOT assume that multiplication always comes before division.
+
+Both have the **same precedence**.
+
+---
+
+# 6. Addition and Subtraction
+
+The following operators also have the same precedence:
+
+```text
++    -
+```
+
+They are evaluated **from left to right**.
+
+### Example
+
+```javascript
+console.log(20 - 5 + 2);
+```
+
+First:
+
+```text
+20 - 5 = 15
+```
+
+Then:
+
+```text
+15 + 2 = 17
+```
+
+Output:
+
+```text
+17
+```
+
+---
+
+# 7. Complete Example
+
+Consider:
+
+```javascript
+console.log(10 + 20 / 5 * 2 - 3);
+```
+
+### Step 1 — Division
+
+```text
+20 / 5 = 4
+```
+
+Expression becomes:
+
+```text
+10 + 4 * 2 - 3
+```
+
+### Step 2 — Multiplication
+
+```text
+4 * 2 = 8
+```
+
+Expression becomes:
+
+```text
+10 + 8 - 3
+```
+
+### Step 3 — Addition
+
+```text
+10 + 8 = 18
+```
+
+Expression becomes:
+
+```text
+18 - 3
+```
+
+### Step 4 — Subtraction
+
+```text
+18 - 3 = 15
+```
+
+Therefore:
+
+```javascript
+console.log(10 + 20 / 5 * 2 - 3);
+
+// 15
+```
+
+---
+
+# 8. Important Rule: Same Precedence
+
+Do not memorize BODMAS as:
+
+```text
+Division → Multiplication → Addition → Subtraction
+```
+
+That can create confusion.
+
+Instead, remember the groups:
+
+```text
+* / %
+```
+
+have the same precedence.
+
+And:
+
+```text
++ -
+```
+
+have the same precedence.
+
+When operators in these groups occur together, evaluate them from **left to right**.
+
+### Example
+
+```javascript
+console.log(100 / 5 * 2);
+```
+
+Left to right:
+
+```text
+100 / 5 = 20
+20 * 2 = 40
+```
+
+Answer:
+
+```text
+40
+```
+
+---
+
+# 9. BODMAS vs JavaScript Terminology
+
+BODMAS is a useful learning shortcut, but in JavaScript the correct technical term is:
+
+> **Operator Precedence**
+
+Instead of saying:
+
+> "JavaScript uses BODMAS."
+
+A better statement is:
+
+> "JavaScript uses operator precedence to determine the order in which operators are evaluated."
+
+---
+
+# 10. Quick Reference
+
+| Priority | Operators | Meaning                             |
+| -------- | --------- | ----------------------------------- |
+| Highest  | `( )`     | Parentheses                         |
+| ↓        | `**`      | Exponentiation                      |
+| ↓        | `* / %`   | Multiplication, Division, Remainder |
+| Lowest   | `+ -`     | Addition, Subtraction               |
+
+### Remember
+
+```text
+( )
+ ↓
+**
+ ↓
+* / %
+ ↓
++ -
+```
+
+---
+
+# 11. Student Practice
+
+Try to calculate these without running the code.
+
+### Question 1
+
+```javascript
+console.log(10 + 5 * 2);
+```
+
+### Question 2
+
+```javascript
+console.log((10 + 5) * 2);
+```
+
+### Question 3
+
+```javascript
+console.log(20 / 5 * 2);
+```
+
+### Question 4
+
+```javascript
+console.log(20 - 5 + 2);
+```
+
+### Question 5
+
+```javascript
+console.log(2 + 3 * 4 ** 2);
+```
+
+### Question 6
+
+```javascript
+console.log(100 - 20 / 5 + 3 * 2);
+```
+
+### Question 7
+
+```javascript
+console.log((100 - 20) / 5 + 3 * 2);
+```
+
+---
+
+# Interview Point
+
+If asked:
+
+**"What is operator precedence in JavaScript?"**
+
+Answer:
+
+> "Operator precedence determines the order in which JavaScript evaluates operators in an expression. For the basic arithmetic operators, parentheses have higher priority, followed by exponentiation, multiplication/division/remainder, and then addition/subtraction. Operators with the same precedence are generally evaluated according to their associativity; for these arithmetic operators, that is left to right."
+
+---
+
+## One-line Summary
+
+> **Operator precedence tells JavaScript which operation to perform first when an expression contains multiple operators.**

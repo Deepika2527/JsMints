@@ -14,9 +14,11 @@
 
 
         console.log(`
-        Double: ${a==b}
-        Triple: ${a ===b }
-        NotEqual: ${a != b}
+        Loose equality(Compare values with type coercion.): ${a==b}
+        Strict equality(Compare values and types without type coercion.): ${a ===b }
+        Loose inequality(Not equal, after type coercion.): ${a != b}
+
+        Strict inequality(!== checks whether either the value OR type is different.): ${a !== b}
         GreaterEqual: ${a >= b}
         LeserEqual: ${a<=b}
         Greater: ${a > b}

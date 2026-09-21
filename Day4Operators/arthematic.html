@@ -1,82 +1,143 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <script>
-        let n1= 1000
-        let n2 = 200
+      let n1 = 1000;
+      let n2 = 200;
 
+      console.log(n1 + n2);
+      console.log("N1 + n2", n1 + n2);
+      console.log("N1 + n2" + n1 + n2);
+      console.log("N1 + n2 " + (n1 + n2));
+      console.log("N1 + n2 " + (n1 + n2) + 1000);
+      console.log("N1 + n2 " + (n1 + n2 + 1000));
 
-        console.log(n1+n2);
-        console.log("N1 + n2", n1+ n2);
-        console.log("N1 + n2" + n1+ n2);
-        console.log("N1 + n2 " + (n1+ n2));
-         console.log("N1 + n2 " + (n1+ n2) + 1000);
-         console.log("N1 + n2 " + (n1+ n2 + 1000));
-
-
-        console.log("using sting literals");
-        console.log(` 
-        Addition: ${n1+n2}
-        Sub : ${n1-n2}
-        Mul: ${n1*n2}
-        Div : ${n1/n2}
-        mod : ${n1%n2}
+      console.log("using sting literals");
+      console.log(` 
+        Addition: ${n1 + n2}
+        Sub : ${n1 - n2}
+        Mul: ${n1 * n2}
+        Div : ${n1 / n2}
+        mod : ${n1 % n2}
         
         
         `);
 
+      console.log(
+        "-------------------------Example 2-------------------------",
+      );
 
-      console.log("-------------------------Example 2-------------------------");
+      let m = "1000";
+      let n = 200;
+
+      console.log("using sting literals");
+      console.log(` 
+        Addition: ${m + n}
+        Sub : ${m - n}
+        Mul: ${m * n}
+        Div : ${m / n}
+        mod : ${m % n}
+        
+        
+        `);
+
+      console.log("Example 3");
+      let a = "1000A";
+      let b = "200";
+
+      console.log("using sting literals");
+      console.log(` 
+        Addition: ${a + b}
+        Sub : ${a - b}
+        Mul: ${a * b}
+        Div : ${a / b}
+        mod : ${a % b}
+        
+        
+        `);
+
+      console.log("Example 4");
+
+      console.log([] + []);
+      console.log(typeof([] + []));
+
+      console.log([12, 34] + [34 + 10]);
+      console.log(typeof([12, 34] + [34 + 10]));
+      console.log([12, 34] + [54 + 10]);
+      console.log(typeof([12, 34] + [54 + 10]));
+      console.log([12+ 34] + [54 + 10]);
+      console.log(typeof([12+34] + [54 + 10]));
+
+
+    //   If an interviewer asks:
+
+// Does [12, 34] + [44] add the arrays?
+
+// Your answer should be:
+
+// No. JavaScript does not perform array addition here. When arrays are used with the + operator, they are converted to primitive values, which in this case are strings, and the strings are concatenated.
+
+
+      console.log("Example 5");
+
+      console.log({} + {});
+      console.log({ name: "Deepika" } + { pet: "Bonkers" });
+
+    //   The output is [object object] [Object Object] beacuse
+    // "The + operator does not perform mathematical addition or merge objects. When ordinary objects are used with +, JavaScript converts them to primitive values. The default string representation of a normal object is "[object Object]". Therefore, the operation becomes string concatenation."
+
+      console.log("Example 6");
+      console.log(null + null);
+      console.log(typeof(null + null));
+      console.log("Type of only null", typeof(null));
       
-        let m= "1000"
-        let n = 200
+      
+      console.log(undefined + undefined);
+      console.log("Type of Undefined: ", typeof(undefined + undefined));
+      console.log("onlytype of undefined", typeof(undefined));
+      
+    //   typeof NaN What is the type of NaN? "number"
+
+      console.log(null + true);
+      console.log(undefined + false);
+      console.log([] + {});
+      console.log([] + {} + true);
+      console.log("Using empty string: ", "" + "");
+      console.log("Using space in empty string:", " " + " ");
+      console.log("Using empty string: ", "" + "" + 1);
+      console.log("Using space in empty string:", " " + " " + 1);
+      console.log("Using space in empty string:", " " + " " + []);
+
+      console.log("Using BODMAS");
+      console.log("1000" + 2000);
+      console.log("1000" + (2000 + 300));
+      console.log("1000" + (2000 + 3000) + 1000);
+      console.log("1000" + (2000 + 3000 + 1000));
+      console.log("***********************************************")
+      console.log(300+"1000" + 2000);
+      console.log("1000" + (2000 + 300));
+      console.log("1000" + (2000 + 3000) + 1000);
+      console.log("1000" + (2000 + 3000 + 1000));
 
 
-        
-
-
-        console.log("using sting literals");
-        console.log(` 
-        Addition: ${m+n}
-        Sub : ${m-n}
-        Mul: ${m*n}
-        Div : ${m/n}
-        mod : ${m%n}
-        
-        
-        `);
-
-
-        console.log("Example 3");
-            let a= "1000A"
-        let b = "200"
-
-
-        
-
-
-        console.log("using sting literals");
-        console.log(` 
-        Addition: ${a+b}
-        Sub : ${a-b}
-        Mul: ${a*b}
-        Div : ${a/b}
-        mod : ${a%b}
-        
-        
-        `);
-        
-        
-        
-        
-        
-
+//       JavaScript Arithmetic — Golden Rules
+// + with numbers: + performs mathematical addition when both operands are numbers.
+// + with strings: If + involves a string, it can perform string concatenation.
+// -, *, /, %: These operators perform numeric operations and JavaScript attempts to convert operands to numbers.
+// null: In numeric arithmetic, null is converted to 0.
+// undefined: In numeric arithmetic, undefined is converted to NaN, so the result is generally NaN.
+// NaN: NaN means "Not a Number," but its JavaScript type is "number".
+// Arrays with +: Arrays are converted to their primitive/string representation when used with +, so their elements are not mathematically added.
+// Objects with +: Ordinary objects are converted to their primitive representation when used with +, so objects are not merged.
+// Expressions inside arrays: An expression written inside an array is evaluated first, while separate array elements are not automatically combined.
+// typeof with expressions: typeof first evaluates the expression and then returns the type of its resulting value.
+// Operator precedence: JavaScript evaluates higher-precedence operators before lower-precedence operators.
+// Same precedence: Operators with the same precedence are evaluated according to their associativity; for the basic arithmetic operators here, this is left-to-right.
     </script>
-    
-</body>
+  </body>
 </html>
