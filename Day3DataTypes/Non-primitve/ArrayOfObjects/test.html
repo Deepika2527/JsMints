@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let orders = [
+        {
+          orderId: 5001,
+
+          customer: {
+            name: "Deepika",
+
+            contact: {
+              email: "deepika@gmail.com",
+              phone: "9876543210",
+            },
+
+            address: {
+              city: "Hyderabad",
+
+              location: {
+                area: "Uppal",
+                pincode: 500039,
+              },
+            },
+          },
+
+          items: [
+            {
+              product: {
+                name: "Laptop",
+
+                specifications: {
+                  brand: "Dell",
+                  processor: {
+                    company: "Intel",
+                    model: "i7",
+                  },
+                },
+              },
+
+              quantity: 1,
+            },
+
+            {
+              product: {
+                name: "Mouse",
+
+                specifications: {
+                  brand: "Logitech",
+                  processor: {
+                    company: "N/A",
+                    model: "N/A",
+                  },
+                },
+              },
+
+              quantity: 2,
+            },
+          ],
+        },
+      ];
+
+      console.log(orders[0].customer.name);
+      console.log(orders[0].customer.contact.email);
+      console.log(orders[0].customer.address.location.pincode);
+      console.log(orders[0].items[1].product.name);
+      console.log(orders[0].items[0].product.specifications.processor.model);
+      console.log(orders[1].customer.address.city);
+      console.log(orders[1]?.customer?.address?.city);
+      console.log(orders[1]?.customer?.address?.city);
+
+
+    </script>
+  </body>
+</html>

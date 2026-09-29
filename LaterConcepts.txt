@@ -1,0 +1,50 @@
+let city = user.address?.city ?? "City not available";
+
+
+?.   → safely access
+??   → provide fallback for null/undefined
+
+----------------------------------------------------------------------------
+OBJECTS
+│
+├── 1. Object.keys / values / entries       ✅
+├── 2. Object.freeze()                      ✅
+│
+├── 3. Object.hasOwn()                      ← NEXT
+│
+├── 4. hasOwnProperty()
+│
+├── 5. for...in loop
+│
+├── 6. Computed property names
+│
+├── 7. Shorthand properties
+│
+├── 8. Nested objects
+│
+├── 9. Methods + this
+│
+├── 10. Object destructuring
+│
+├── 11. Spread operator with objects
+│
+├── 12. Object.assign()
+│
+├── 13. Copying objects
+│
+├── 14. Reference behavior
+│
+├── 15. Shallow vs deep copy
+│
+├── 16. Constructor functions
+│
+├── 17. new keyword
+│
+├── 18. this
+│
+├── 19. Prototypes
+│
+├── 20. Prototype chain
+│
+└── 21. Classes
+------------------------------

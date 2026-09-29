@@ -1,0 +1,15 @@
+What is a Function in JavaScript?
+First, the basic idea
+A function is a reusable block of code designed to perform a particular task. 
+or
+A function is a way of organizing application logic into a reusable unit with a clear responsibility.
+Think of it like a machine.
+You give the machine something → it performs a task → it may give you a result.
+For example, imagine an e-commerce application:
+- Calculate product price
+- Validate an email
+- Calculate discount
+- Check whether a user is logged in
+- Display a product
+- Calculate delivery charges
+Instead of writing the same logic again and again, we can put that logic inside a function and reuse it.

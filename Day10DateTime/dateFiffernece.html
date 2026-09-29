@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Diffrences</title>
+  </head>
+  <body>
+    <script>
+      let now = new Date();
+
+      now.getDate();
+      console.log(now.getDate());
+
+      now1 = new Date();
+      now1 = now1.toString();
+
+      //   console.log(now1.getDate());
+      //   now1.getDate();
+
+      //    new Date() creates a Date object representing the current date and time. Methods like getDate() work on that Date object. toString() returns a string representation of the Date; it doesn't modify the original object by itself. However, if I assign the result back to the variable, such as now = now.toString(), that variable will now hold a string instead of a Date object. Therefore, Date-specific methods like getDate() will no longer work on that variable."
+      //Why would you convert a Date to a string?
+      // "I convert a Date to a string when I need a textual representation, for example, when displaying a date to the user or preparing it for data exchange. If I still need to perform Date operations or calculations, I keep it as a Date object."
+
+      console.log("Ecommerce application");
+
+        let orderDate = new Date();
+        console.log(orderDate);
+        
+
+        let deliveryDate = new Date(orderDate);
+        console.log(deliveryDate);
+        
+        deliveryDate.setDate(deliveryDate.getDate() + 5)
+        console.log(deliveryDate);
+        
+        console.log(typeof deliveryDate);
+
+        //to display
+        console.log("To display the date");
+        let displayDate = deliveryDate.toString();
+        // Don't do this unless you intentionally no longer need Date methods,else methods cant be used.
+        console.log(typeof displayDate);  // string
+console.log(displayDate);
+                
+        
+    </script>
+  </body>
+</html>

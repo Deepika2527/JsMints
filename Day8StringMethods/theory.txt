@@ -1,0 +1,2642 @@
+# JavaScript Strings — Complete Developer Reference
+
+## 1. What is a String?
+
+A **string** is a sequence of characters used to represent text in JavaScript.
+
+Examples:
+
+```js
+"Hello"
+'Hello'
+`Hello`
+```
+
+A string can contain:
+
+* Letters
+* Numbers
+* Symbols
+* Spaces
+* Special characters
+* Unicode characters
+
+```js
+let name = "Deepika";
+let message = "Hello World!";
+let code = "JS123";
+let symbol = "@#$";
+```
+
+Even though `"123"` contains numbers, it is still a **string**, because it is text.
+
+```js
+typeof "123"; // "string"
+typeof 123;   // "number"
+```
+
+---
+
+# 2. Ways to Define a String
+
+JavaScript provides three main string literal syntaxes.
+
+## 2.1 Single Quotes
+
+```js
+let name = 'Deepika';
+```
+
+## 2.2 Double Quotes
+
+```js
+let name = "Deepika";
+```
+
+## 2.3 Backticks — Template Literals
+
+```js
+let name = `Deepika`;
+```
+
+All three create a string value.
+
+### Why do we have three ways?
+
+The first two are mainly different quoting styles.
+
+Backticks provide additional capabilities such as:
+
+* Variable interpolation
+* Expressions
+* Multiline strings
+
+---
+
+# 3. Single Quotes vs Double Quotes
+
+There is no major runtime difference between:
+
+```js
+let a = "Hello";
+let b = 'Hello';
+```
+
+Both are strings.
+
+The useful difference is when your text itself contains quotes.
+
+```js
+let message = "I'm learning JavaScript";
+```
+
+Using double quotes here avoids escaping the apostrophe.
+
+Or:
+
+```js
+let message = 'He said "Hello"';
+```
+
+You can also escape characters:
+
+```js
+let message = 'I\'m learning JavaScript';
+```
+
+### Developer rule
+
+Choose a consistent quote style for your project and follow the project's formatter/linting rules.
+
+---
+
+# 4. Template Literals
+
+Template literals use backticks:
+
+```js
+let name = "Deepika";
+
+let message = `Hello ${name}`;
+```
+
+Output:
+
+```text
+Hello Deepika
+```
+
+The `${}` syntax is called **interpolation**.
+
+You can also put expressions inside it:
+
+```js
+let a = 10;
+let b = 20;
+
+console.log(`Total = ${a + b}`);
+```
+
+Output:
+
+```text
+Total = 30
+```
+
+---
+
+# 5. Why Template Literals Are Useful
+
+Without template literals:
+
+```js
+let name = "Deepika";
+let age = 25;
+
+let message = "My name is " + name + " and I am " + age + " years old.";
+```
+
+With template literals:
+
+```js
+let message = `My name is ${name} and I am ${age} years old.`;
+```
+
+The second version is generally easier to read.
+
+---
+
+# 6. Multiline Strings
+
+Template literals can naturally span multiple lines:
+
+```js
+let message = `
+Hello Deepika,
+Welcome to JavaScript.
+Keep learning!
+`;
+```
+
+This is another reason backticks are useful.
+
+---
+
+# 7. String Primitive vs String Object
+
+This is an important JavaScript distinction.
+
+## String primitive
+
+```js
+let str = "Hello";
+```
+
+This is the normal way to create a string.
+
+```js
+typeof str;
+// "string"
+```
+
+## String object
+
+You can technically create:
+
+```js
+let str = new String("Hello");
+```
+
+But now:
+
+```js
+typeof str;
+// "object"
+```
+
+It is a **String object**, not a primitive string.
+
+### Developer recommendation
+
+Prefer:
+
+```js
+let str = "Hello";
+```
+
+instead of:
+
+```js
+let str = new String("Hello");
+```
+
+For normal application development, there is almost never a reason to manually create String objects.
+
+---
+
+# 8. Strings Are Immutable
+
+This is one of the most important concepts in JavaScript strings.
+
+**Immutable means the original string cannot be changed in place.**
+
+For example:
+
+```js
+let str = "Hello";
+
+str.toUpperCase();
+
+console.log(str);
+```
+
+Output:
+
+```text
+Hello
+```
+
+Why?
+
+Because:
+
+```js
+str.toUpperCase()
+```
+
+creates and returns a **new string**.
+
+You need:
+
+```js
+str = str.toUpperCase();
+```
+
+Now:
+
+```text
+HELLO
+```
+
+The same principle applies to:
+
+```js
+replace()
+replaceAll()
+trim()
+slice()
+substring()
+toUpperCase()
+toLowerCase()
+```
+
+and the other string methods we studied.
+
+### Golden rule
+
+> String methods generally return a new value; they do not modify the original string.
+
+---
+
+# 9. String Indexing
+
+JavaScript strings use **zero-based indexing**.
+
+Example:
+
+```js
+let str = "JavaScript";
+```
+
+Index map:
+
+```text
+Character: J  a  v  a  S  c  r  i  p  t
+Index:     0  1  2  3  4  5  6  7  8  9
+```
+
+Therefore:
+
+```js
+str[0]; // "J"
+str[4]; // "S"
+str[9]; // "t"
+```
+
+---
+
+# 10. `length`
+
+`length` gives the number of UTF-16 code units in the string.
+
+For normal English text, you can generally think of it as the number of characters:
+
+```js
+let str = "Hello";
+
+console.log(str.length);
+```
+
+Output:
+
+```text
+5
+```
+
+Important:
+
+> `length` is a **property**, not a method.
+
+Correct:
+
+```js
+str.length
+```
+
+Not:
+
+```js
+str.length()
+```
+
+---
+
+# 11. Negative Indexing — Important Distinction
+
+Not every string operation supports negative indexing.
+
+This distinction caused several important experiments during our learning.
+
+### Supports negative positions:
+
+```js
+str.at(-1);
+str.slice(-1);
+```
+
+### Does NOT use negative indexing:
+
+```js
+str.charAt(-1);
+str.indexOf("x", -1);
+str.lastIndexOf("x", -1);
+str.substring(-1);
+```
+
+Each method handles negative values according to its own rules.
+
+Never assume:
+
+> "If one string method supports negative indexes, all string methods do."
+
+They don't.
+
+---
+
+# ==================================================
+
+# STRING METHODS — CLASSIFICATION
+
+# ==================================================
+
+A useful developer-oriented classification is:
+
+```text
+STRING METHODS
+│
+├── 1. Case Conversion
+│   ├── toUpperCase()
+│   └── toLowerCase()
+│
+├── 2. Searching / Checking
+│   ├── indexOf()
+│   ├── lastIndexOf()
+│   ├── includes()
+│   ├── startsWith()
+│   └── endsWith()
+│
+├── 3. Extraction / Character Access
+│   ├── slice()
+│   ├── substring()
+│   ├── charAt()
+│   ├── charCodeAt()
+│   └── at()
+│
+├── 4. Replacement
+│   ├── replace()
+│   └── replaceAll()
+│
+├── 5. Whitespace Handling
+│   ├── trim()
+│   ├── trimStart()
+│   └── trimEnd()
+│
+├── 6. Conversion / Splitting
+│   └── split()
+│
+├── 7. Repetition
+│   └── repeat()
+│
+└── 8. Padding / Formatting
+    ├── padStart()
+    └── padEnd()
+```
+
+This classification is useful because when you encounter a requirement, you can think:
+
+> "Am I searching, extracting, replacing, cleaning, splitting, or formatting?"
+
+---
+
+# ==================================================
+
+# 1. CASE CONVERSION
+
+# ==================================================
+
+## `toUpperCase()`
+
+Converts applicable letters to uppercase.
+
+```js
+let str = "JavaScript";
+
+console.log(str.toUpperCase());
+```
+
+Output:
+
+```text
+JAVASCRIPT
+```
+
+## `toLowerCase()`
+
+Converts applicable letters to lowercase.
+
+```js
+console.log("JavaScript".toLowerCase());
+```
+
+Output:
+
+```text
+javascript
+```
+
+### Both return:
+
+**A new string**
+
+### Original modified?
+
+No.
+
+```js
+let str = "JavaScript";
+
+str.toUpperCase();
+
+console.log(str);
+// JavaScript
+```
+
+---
+
+## Real-world pattern
+
+Case normalization is very common:
+
+```js
+let email = userInput.trim().toLowerCase();
+```
+
+Or case-insensitive searching:
+
+```js
+let result =
+    username.toLowerCase().includes(search.toLowerCase());
+```
+
+This avoids problems such as:
+
+```text
+JavaScript
+javascript
+JAVASCRIPT
+JavaScript
+```
+
+being treated as different text when your business logic considers them equivalent.
+
+---
+
+# ==================================================
+
+# 2. SEARCHING / CHECKING
+
+# ==================================================
+
+These methods answer questions about a string.
+
+## `indexOf()`
+
+### Purpose
+
+Finds the **first occurrence** of a value.
+
+```js
+let str = "JavaScript is easy";
+
+console.log(str.indexOf("a"));
+```
+
+Output:
+
+```text
+1
+```
+
+It returns an **index**.
+
+If not found:
+
+```js
+str.indexOf("Python");
+// -1
+```
+
+### Important
+
+`indexOf()` is case-sensitive.
+
+```js
+"Hello".indexOf("hello");
+// -1
+```
+
+---
+
+## `lastIndexOf()`
+
+Finds the **last occurrence**.
+
+```js
+let str = "hello hello";
+
+console.log(str.lastIndexOf("hello"));
+```
+
+It returns the index where the last occurrence starts.
+
+If not found:
+
+```js
+str.lastIndexOf("Python");
+// -1
+```
+
+---
+
+## `indexOf()` vs `lastIndexOf()`
+
+```text
+indexOf()
+→ first occurrence
+
+lastIndexOf()
+→ last occurrence
+```
+
+### Important second argument
+
+```js
+str.indexOf("i", 6);
+```
+
+The second argument tells `indexOf()` where to **start searching from**.
+
+For `lastIndexOf()`:
+
+```js
+str.lastIndexOf("i", 20);
+```
+
+The second argument specifies the position from which the backward search begins.
+
+### Negative second arguments
+
+They are **not negative indexing**.
+
+For example:
+
+```js
+str.indexOf("x", -5);
+```
+
+does not mean:
+
+> Start 5 positions from the end.
+
+Negative values are effectively treated as a search position at the beginning.
+
+For `lastIndexOf()`, a negative starting position can result in:
+
+```js
+str.lastIndexOf("x", -1);
+// -1
+```
+
+because the backward search position is before the string.
+
+### Golden rule
+
+> `indexOf()` and `lastIndexOf()` use search positions, not negative indexing.
+
+---
+
+# `includes()`
+
+### Purpose
+
+Checks whether a string contains a value.
+
+Returns:
+
+```text
+true
+false
+```
+
+Example:
+
+```js
+"JavaScript".includes("Script");
+// true
+```
+
+```js
+"JavaScript".includes("Python");
+// false
+```
+
+### Difference from `indexOf()`
+
+```text
+includes()
+→ "Does it exist?"
+
+indexOf()
+→ "Where does the first one occur?"
+```
+
+Example:
+
+```js
+"JavaScript".includes("Script");
+// true
+
+"JavaScript".indexOf("Script");
+// 4
+```
+
+Both are case-sensitive.
+
+---
+
+# `startsWith()`
+
+Checks whether a string starts with a specified value.
+
+```js
+"https://example.com".startsWith("https://");
+// true
+```
+
+Returns:
+
+```text
+true / false
+```
+
+### Second argument
+
+```js
+str.startsWith(searchValue, position)
+```
+
+The second argument is a **position**.
+
+It means:
+
+> Start checking from this position.
+
+This is different from `endsWith()`.
+
+---
+
+# `endsWith()`
+
+Checks whether a string ends with a specified value.
+
+```js
+"photo.jpg".endsWith(".jpg");
+// true
+```
+
+Returns:
+
+```text
+true / false
+```
+
+### Important second argument
+
+```js
+str.endsWith(searchValue, length)
+```
+
+The second argument is a **length**, NOT an index.
+
+Example:
+
+```js
+"Hello JavaScript".endsWith("Hello", 5);
+```
+
+The method considers only the first 5 characters:
+
+```text
+Hello
+```
+
+Does `"Hello"` end with `"Hello"`?
+
+Yes.
+
+```text
+true
+```
+
+### Important distinction
+
+```text
+startsWith(value, position)
+→ second argument = POSITION
+
+endsWith(value, length)
+→ second argument = LENGTH
+```
+
+This was one of the tricky behaviors we practiced.
+
+---
+
+# Searching Methods — Summary
+
+| Method          | Question                       | Return           |
+| --------------- | ------------------------------ | ---------------- |
+| `indexOf()`     | Where is the first occurrence? | index / `-1`     |
+| `lastIndexOf()` | Where is the last occurrence?  | index / `-1`     |
+| `includes()`    | Does it exist?                 | `true` / `false` |
+| `startsWith()`  | Does it start with this?       | `true` / `false` |
+| `endsWith()`    | Does it end with this?         | `true` / `false` |
+
+---
+
+# ==================================================
+
+# 3. EXTRACTION / CHARACTER ACCESS
+
+# ==================================================
+
+## `slice()`
+
+Syntax:
+
+```js
+string.slice(start, end)
+```
+
+Rules:
+
+> Start is included. End is excluded.
+
+```js
+"JavaScript".slice(0, 4);
+// "Java"
+```
+
+---
+
+## Negative indexes with `slice()`
+
+`slice()` supports negative indexes.
+
+```js
+"JavaScript".slice(-3);
+// "ipt"
+```
+
+Negative indexes count from the end:
+
+```text
+JavaScript
+          -3 -2 -1
+           i  p  t
+```
+
+---
+
+## `slice(start, end)` with negative values
+
+```js
+"JavaScript".slice(-6, -3);
+```
+
+The negative positions are calculated from the end.
+
+The important rule is:
+
+> After positions are resolved, `start` must come before `end`.
+
+If start is after end:
+
+```js
+"JavaScript".slice(-3, -6);
+```
+
+Result:
+
+```text
+""
+```
+
+`slice()` **does not swap** the arguments.
+
+---
+
+# `substring()`
+
+Syntax:
+
+```js
+string.substring(start, end)
+```
+
+Like `slice()`:
+
+> Start is included and end is excluded.
+
+But it has two major behavioral differences.
+
+## Rule 1 — Negative values become `0`
+
+```js
+"JavaScript".substring(-3);
+```
+
+behaves like:
+
+```js
+"JavaScript".substring(0);
+```
+
+So it returns the entire string.
+
+---
+
+## Rule 2 — `substring()` swaps start and end
+
+```js
+"JavaScript".substring(7, 3);
+```
+
+Because:
+
+```text
+7 > 3
+```
+
+JavaScript treats it as:
+
+```js
+"JavaScript".substring(3, 7);
+```
+
+This is very different from `slice()`.
+
+---
+
+# `slice()` vs `substring()` — Critical Reference
+
+| Behavior          | `slice()`    | `substring()`    |
+| ----------------- | ------------ | ---------------- |
+| Start included    | Yes          | Yes              |
+| End excluded      | Yes          | Yes              |
+| Negative indexes  | Supported    | Converted to `0` |
+| `start > end`     | Returns `""` | Swaps them       |
+| One argument      | To end       | To end           |
+| Original modified | No           | No               |
+
+### Memory trick
+
+```text
+slice()
+→ Negative YES
+→ Swap NO
+
+substring()
+→ Negative NO → 0
+→ Swap YES
+```
+
+---
+
+# `charAt()`
+
+Returns the character at a given index.
+
+```js
+"testing".charAt(1);
+// "e"
+```
+
+### Invalid index
+
+```js
+"testing".charAt(19);
+```
+
+Result:
+
+```text
+""
+```
+
+### Negative index
+
+```js
+"testing".charAt(-1);
+```
+
+Result:
+
+```text
+""
+```
+
+`charAt()` does **not** support negative indexing.
+
+---
+
+# `at()`
+
+`at()` also returns the character at a specified index.
+
+```js
+"testing".at(1);
+// "e"
+```
+
+But unlike `charAt()`, it supports negative indexing.
+
+```js
+"testing".at(-1);
+// "g"
+```
+
+```js
+"testing".at(-2);
+// "n"
+```
+
+Negative index map:
+
+```text
+t  e  s  t  i  n  g
+0  1  2  3  4  5  6
+-7 -6 -5 -4 -3 -2 -1
+```
+
+---
+
+# `charAt()` vs `at()`
+
+|                        | `charAt()` | `at()`      |
+| ---------------------- | ---------- | ----------- |
+| Positive index         | Yes        | Yes         |
+| Negative index         | No         | Yes         |
+| Invalid positive index | `""`       | `undefined` |
+| Returns character      | Yes        | Yes         |
+
+This difference is important.
+
+```js
+"test".charAt(10);
+// ""
+
+"test".at(10);
+// undefined
+```
+
+---
+
+# `charCodeAt()`
+
+`charCodeAt()` returns the **UTF-16 code unit** at a particular position.
+
+```js
+"ABC".charCodeAt(0);
+// 65
+```
+
+```js
+"ABC".charCodeAt(1);
+// 66
+```
+
+Compare:
+
+```text
+charAt()
+→ character
+
+charCodeAt()
+→ numeric UTF-16 code unit
+
+at()
+→ character + negative indexing
+```
+
+Example:
+
+```js
+"testing".charAt(1);
+// "e"
+
+"testing".charCodeAt(1);
+// 101
+
+"testing".at(1);
+// "e"
+```
+
+For normal English characters, you can think of `charCodeAt()` as converting the character into its numeric character code.
+
+For advanced Unicode handling, JavaScript also provides `codePointAt()`, but that is outside the core beginner String set we've studied.
+
+---
+
+# Character Access — Summary
+
+| Method         | Purpose          | Invalid index |
+| -------------- | ---------------- | ------------- |
+| `charAt()`     | Character        | `""`          |
+| `at()`         | Character        | `undefined`   |
+| `charCodeAt()` | UTF-16 code unit | `NaN`         |
+
+Important:
+
+`charAt()` and `at()` return **characters**.
+
+`charCodeAt()` returns a **number**.
+
+---
+
+# ==================================================
+
+# 4. REPLACEMENT
+
+# ==================================================
+
+## `replace()`
+
+Syntax:
+
+```js
+string.replace(searchValue, replacement)
+```
+
+Example:
+
+```js
+"Java is easy".replace("Java", "JavaScript");
+```
+
+Result:
+
+```text
+JavaScript is easy
+```
+
+### With a string search value
+
+`replace()` replaces the **first matching occurrence**.
+
+```js
+"Java Java Java".replace("Java", "Python");
+```
+
+Result:
+
+```text
+Python Java Java
+```
+
+---
+
+# `replaceAll()`
+
+Replaces all matching occurrences.
+
+```js
+"Java Java Java".replaceAll("Java", "Python");
+```
+
+Result:
+
+```text
+Python Python Python
+```
+
+---
+
+# Case Sensitivity
+
+Both are case-sensitive when using string search values.
+
+```js
+"hello Hello HELLO".replaceAll("hello", "Hi");
+```
+
+Result:
+
+```text
+Hi Hello HELLO
+```
+
+Only exact lowercase `"hello"` matches.
+
+---
+
+# Replacement and Immutability
+
+Neither method modifies the original string.
+
+```js
+let str = "Hello World";
+
+let result = str.replace("World", "Deepika");
+
+console.log(str);
+console.log(result);
+```
+
+Output:
+
+```text
+Hello World
+Hello Deepika
+```
+
+Why?
+
+Because:
+
+```text
+original string
+      ↓
+replace()
+      ↓
+new string
+```
+
+---
+
+# `replace()` vs `replaceAll()`
+
+|                    | `replace()` | `replaceAll()` |
+| ------------------ | ----------- | -------------- |
+| String search      | First match | All matches    |
+| Case-sensitive     | Yes         | Yes            |
+| Returns new string | Yes         | Yes            |
+| Changes original   | No          | No             |
+
+### Advanced note
+
+With regular expressions, `replace()` can also replace multiple matches when the regex uses the global `g` flag.
+
+`replaceAll()` with a regular expression requires the global `g` flag.
+
+Regular expressions are a separate topic and should be learned later.
+
+---
+
+# ==================================================
+
+# 5. WHITESPACE
+
+# ==================================================
+
+## What is whitespace?
+
+Whitespace includes things such as:
+
+* spaces
+* tabs
+* line breaks
+* other whitespace characters
+
+Example:
+
+```js
+"   Deepika   "
+```
+
+---
+
+# `trim()`
+
+Removes whitespace from **both ends**.
+
+```js
+"   Deepika   ".trim();
+```
+
+Result:
+
+```text
+Deepika
+```
+
+Important:
+
+It does NOT remove spaces inside the string.
+
+```js
+"   Hello   World   ".trim();
+```
+
+Result:
+
+```text
+Hello   World
+```
+
+The three spaces between `Hello` and `World` remain.
+
+---
+
+# `trimStart()`
+
+Removes whitespace only from the beginning.
+
+```js
+"   Hello   ".trimStart();
+```
+
+Result:
+
+```text
+"Hello   "
+```
+
+---
+
+# `trimEnd()`
+
+Removes whitespace only from the end.
+
+```js
+"   Hello   ".trimEnd();
+```
+
+Result:
+
+```text
+"   Hello"
+```
+
+---
+
+# Whitespace Methods — Summary
+
+| Method        | Beginning | End    | Middle |
+| ------------- | --------- | ------ | ------ |
+| `trim()`      | Remove    | Remove | Keep   |
+| `trimStart()` | Remove    | Keep   | Keep   |
+| `trimEnd()`   | Keep      | Remove | Keep   |
+
+All return a **new string**.
+
+---
+
+# Real-world validation
+
+A common form-validation pattern:
+
+```js
+let username = "     ";
+
+if (username.trim() === "") {
+    console.log("Invalid username");
+}
+```
+
+Why?
+
+Because:
+
+```text
+""
+"   "
+"      "
+```
+
+contain no meaningful user input.
+
+---
+
+# ==================================================
+
+# 6. `split()` — STRING → ARRAY
+
+# ==================================================
+
+`split()` is especially important because it changes the data structure from:
+
+```text
+String → Array
+```
+
+Syntax:
+
+```js
+string.split(separator)
+```
+
+Example:
+
+```js
+let skills = "HTML,CSS,JavaScript";
+
+console.log(skills.split(","));
+```
+
+Result:
+
+```js
+["HTML", "CSS", "JavaScript"]
+```
+
+---
+
+# Splitting by a space
+
+```js
+"JavaScript is easy".split(" ");
+```
+
+Result:
+
+```js
+["JavaScript", "is", "easy"]
+```
+
+---
+
+# `split("")`
+
+An empty string separator separates individual characters.
+
+```js
+"Hello".split("");
+```
+
+Result:
+
+```js
+["H", "e", "l", "l", "o"]
+```
+
+---
+
+# `split()` without a separator
+
+```js
+"Hello".split();
+```
+
+Result:
+
+```js
+["Hello"]
+```
+
+The whole string becomes one array element.
+
+---
+
+# The separator is removed
+
+```js
+"A-B-C".split("-");
+```
+
+Result:
+
+```js
+["A", "B", "C"]
+```
+
+The `-` characters are used as boundaries and don't appear in the result.
+
+---
+
+# Multiple-character separator
+
+```js
+"apple--banana--mango".split("--");
+```
+
+Result:
+
+```js
+["apple", "banana", "mango"]
+```
+
+The separator doesn't have to be one character.
+
+---
+
+# `split()` with a limit
+
+Syntax:
+
+```js
+string.split(separator, limit)
+```
+
+Example:
+
+```js
+"A-B-C-D".split("-", 2);
+```
+
+Result:
+
+```js
+["A", "B"]
+```
+
+Important:
+
+> `limit` is the maximum number of array elements returned.
+
+It does NOT mean:
+
+> "Split only this many times."
+
+---
+
+# Empty Elements in `split()`
+
+This is a tricky but important behavior.
+
+### Adjacent separators
+
+```js
+"A,,B".split(",");
+```
+
+Result:
+
+```js
+["A", "", "B"]
+```
+
+Why?
+
+There is nothing between the two commas.
+
+---
+
+### Separator at the beginning
+
+```js
+",A,B".split(",");
+```
+
+Result:
+
+```js
+["", "A", "B"]
+```
+
+---
+
+### Separator at the end
+
+```js
+"A,B,C,".split(",");
+```
+
+Result:
+
+```js
+["A", "B", "C", ""]
+```
+
+This happens because there is an empty segment after the final separator.
+
+---
+
+# `split()` and `join()`
+
+These two methods are closely related.
+
+### String → Array
+
+```js
+let arr = "A-B-C".split("-");
+```
+
+Result:
+
+```js
+["A", "B", "C"]
+```
+
+### Array → String
+
+```js
+arr.join("-");
+```
+
+Result:
+
+```text
+A-B-C
+```
+
+Think of the relationship as:
+
+```text
+String
+   ↓
+ split()
+   ↓
+Array
+   ↓
+ join()
+   ↓
+String
+```
+
+Important:
+
+> `split()` is a String method.
+> `join()` is an Array method.
+
+---
+
+# ==================================================
+
+# 7. `repeat()`
+
+# ==================================================
+
+`repeat()` repeats a string a specified number of times.
+
+```js
+"Hi".repeat(3);
+```
+
+Result:
+
+```text
+HiHiHi
+```
+
+---
+
+# Important `repeat()` behavior
+
+```js
+"Hi".repeat(0);
+// ""
+```
+
+```js
+"Hi".repeat(1);
+// "Hi"
+```
+
+```js
+"Hi".repeat(3);
+// "HiHiHi"
+```
+
+Negative counts cause a `RangeError`.
+
+```js
+"Hi".repeat(-1);
+// RangeError
+```
+
+Decimal counts are converted to an integer:
+
+```js
+"Hi".repeat(3.7);
+// "HiHiHi"
+```
+
+For normal development, use a non-negative integer.
+
+---
+
+# `repeat()` does not add spaces
+
+```js
+"JS".repeat(3);
+```
+
+is:
+
+```text
+JSJSJS
+```
+
+not:
+
+```text
+JS JS JS
+```
+
+The original string is copied exactly.
+
+---
+
+# Real-world example
+
+Console separators:
+
+```js
+console.log("-".repeat(30));
+```
+
+Output:
+
+```text
+------------------------------
+```
+
+---
+
+# ==================================================
+
+# 8. PADDING
+
+# ==================================================
+
+## `padStart()`
+
+Adds characters to the beginning until the string reaches a target length.
+
+```js
+"5".padStart(3, "0");
+```
+
+Result:
+
+```text
+"005"
+```
+
+### Critical concept
+
+The `3` means:
+
+> Make the **total length 3**.
+
+It does NOT mean:
+
+> Add 3 zeros.
+
+Current:
+
+```text
+"5"
+length = 1
+```
+
+Target:
+
+```text
+3
+```
+
+Therefore two zeros are added:
+
+```text
+005
+```
+
+---
+
+# `padEnd()`
+
+Adds characters to the end.
+
+```js
+"5".padEnd(3, "0");
+```
+
+Result:
+
+```text
+"500"
+```
+
+---
+
+# If the string is already long enough
+
+```js
+"12345".padStart(3, "0");
+```
+
+Result:
+
+```text
+"12345"
+```
+
+Nothing is removed.
+
+Padding only adds characters when necessary.
+
+---
+
+# Multiple-character padding
+
+```js
+"abc".padStart(8, "xy");
+```
+
+Five padding characters are required.
+
+`"xyxyx"` is used:
+
+```text
+xyxyxabc
+```
+
+Result:
+
+```js
+"xyxyxabc"
+```
+
+The padding string may be repeated and truncated to provide exactly the required number of characters.
+
+---
+
+# Default padding
+
+If the second argument is omitted, spaces are used.
+
+```js
+"5".padStart(3);
+```
+
+Result:
+
+```text
+"  5"
+```
+
+And:
+
+```js
+"5".padEnd(3);
+```
+
+Result:
+
+```text
+"5  "
+```
+
+---
+
+# Real-world example — IDs
+
+```js
+let id = "7";
+
+let invoice = "INV" + id.padStart(3, "0");
+
+console.log(invoice);
+```
+
+Result:
+
+```text
+INV007
+```
+
+---
+
+# Real-world example — Time
+
+```js
+let hour = "7";
+let minute = "5";
+
+let time =
+    hour.padStart(2, "0") +
+    ":" +
+    minute.padStart(2, "0");
+
+console.log(time);
+```
+
+Result:
+
+```text
+07:05
+```
+
+---
+
+# ==================================================
+
+# COMPLETE RETURN-VALUE REFERENCE
+
+# ==================================================
+
+One of the most useful things for a developer is knowing **what a method returns**.
+
+| Method          | Normal return                       |
+| --------------- | ----------------------------------- |
+| `toUpperCase()` | New string                          |
+| `toLowerCase()` | New string                          |
+| `indexOf()`     | Index / `-1`                        |
+| `lastIndexOf()` | Index / `-1`                        |
+| `includes()`    | `true` / `false`                    |
+| `startsWith()`  | `true` / `false`                    |
+| `endsWith()`    | `true` / `false`                    |
+| `slice()`       | New string                          |
+| `substring()`   | New string                          |
+| `charAt()`      | Character / `""`                    |
+| `charCodeAt()`  | Number / `NaN` for invalid position |
+| `at()`          | Character / `undefined`             |
+| `replace()`     | New string                          |
+| `replaceAll()`  | New string                          |
+| `trim()`        | New string                          |
+| `trimStart()`   | New string                          |
+| `trimEnd()`     | New string                          |
+| `split()`       | Array                               |
+| `repeat()`      | New string                          |
+| `padStart()`    | New string                          |
+| `padEnd()`      | New string                          |
+
+---
+
+# ==================================================
+
+# OUT-OF-RANGE / INVALID POSITION REFERENCE
+
+# ==================================================
+
+This is particularly important because different methods behave differently.
+
+## Character access
+
+```js
+"Hello".charAt(100);
+// ""
+
+"Hello".at(100);
+// undefined
+
+"Hello".charCodeAt(100);
+// NaN
+```
+
+So:
+
+```text
+charAt()      → ""
+at()          → undefined
+charCodeAt()  → NaN
+```
+
+---
+
+## Searching
+
+```js
+"Hello".indexOf("x");
+// -1
+
+"Hello".lastIndexOf("x");
+// -1
+```
+
+Searching methods use `-1` to mean:
+
+> Not found.
+
+---
+
+## `slice()`
+
+```js
+"Hello".slice(100);
+```
+
+Result:
+
+```text
+""
+```
+
+A start beyond the string produces an empty result.
+
+---
+
+## `substring()`
+
+```js
+"Hello".substring(100);
+```
+
+Result:
+
+```text
+""
+```
+
+But remember its argument-swapping behavior:
+
+```js
+"Hello".substring(100, 2);
+```
+
+Since `100 > 2`, it swaps:
+
+```js
+"Hello".substring(2, 100);
+```
+
+So it returns:
+
+```text
+"llo"
+```
+
+This is one of the reasons `substring()` can behave unexpectedly if you don't know its rules.
+
+---
+
+# ==================================================
+
+# THE MOST IMPORTANT DIFFERENCES
+
+# ==================================================
+
+## `slice()` vs `substring()`
+
+```text
+slice
+→ supports negative indexes
+→ does NOT swap
+
+substring
+→ negative values become 0
+→ DOES swap
+```
+
+---
+
+## `charAt()` vs `at()`
+
+```text
+charAt()
+→ no negative indexing
+→ invalid index = ""
+
+at()
+→ supports negative indexing
+→ invalid index = undefined
+```
+
+---
+
+## `charAt()` vs `charCodeAt()`
+
+```text
+charAt()
+→ character
+
+charCodeAt()
+→ UTF-16 numeric code
+```
+
+---
+
+## `indexOf()` vs `includes()`
+
+```text
+indexOf()
+→ position
+→ -1 if not found
+
+includes()
+→ true / false
+```
+
+---
+
+## `indexOf()` vs `lastIndexOf()`
+
+```text
+indexOf()
+→ first occurrence
+
+lastIndexOf()
+→ last occurrence
+```
+
+---
+
+## `includes()` vs `startsWith()` vs `endsWith()`
+
+```text
+includes()
+→ anywhere
+
+startsWith()
+→ beginning
+
+endsWith()
+→ ending
+```
+
+---
+
+## `replace()` vs `replaceAll()`
+
+```text
+replace()
+→ first matching occurrence with string search
+
+replaceAll()
+→ all matching occurrences
+```
+
+---
+
+## `trim()` vs `trimStart()` vs `trimEnd()`
+
+```text
+trim()
+→ both sides
+
+trimStart()
+→ beginning
+
+trimEnd()
+→ ending
+```
+
+---
+
+## `padStart()` vs `padEnd()`
+
+```text
+padStart()
+→ add to beginning
+
+padEnd()
+→ add to ending
+```
+
+---
+
+# ==================================================
+
+# DEVELOPER DECISION GUIDE
+
+# ==================================================
+
+When working with a string, ask what you actually need.
+
+### "I need to change the case."
+
+```js
+toUpperCase()
+toLowerCase()
+```
+
+### "I need to find where something occurs."
+
+```js
+indexOf()
+lastIndexOf()
+```
+
+### "I only need to know whether something exists."
+
+```js
+includes()
+```
+
+### "I need to check the beginning."
+
+```js
+startsWith()
+```
+
+### "I need to check the ending."
+
+```js
+endsWith()
+```
+
+### "I need part of the string."
+
+```js
+slice()
+```
+
+### "I am working with older/existing code that uses substring behavior."
+
+```js
+substring()
+```
+
+### "I need one character."
+
+```js
+at()
+```
+
+### "I need the character's UTF-16 code."
+
+```js
+charCodeAt()
+```
+
+### "I need to replace the first occurrence."
+
+```js
+replace()
+```
+
+### "I need to replace all occurrences."
+
+```js
+replaceAll()
+```
+
+### "I need to remove surrounding whitespace."
+
+```js
+trim()
+```
+
+### "I need to turn a delimited string into an array."
+
+```js
+split()
+```
+
+### "I need to repeat some text."
+
+```js
+repeat()
+```
+
+### "I need fixed-width formatting."
+
+```js
+padStart()
+padEnd()
+```
+
+---
+
+# ==================================================
+
+# VERY IMPORTANT COMBINATIONS
+
+# ==================================================
+
+Real applications rarely use one method in isolation.
+
+## 1. Clean + normalize
+
+```js
+let email = userInput.trim().toLowerCase();
+```
+
+This means:
+
+```text
+user input
+   ↓
+trim()
+   ↓
+remove surrounding whitespace
+   ↓
+toLowerCase()
+   ↓
+normalized value
+```
+
+---
+
+## 2. Search after normalization
+
+```js
+let result =
+    username.trim().toLowerCase().includes("admin");
+```
+
+This is a common pattern for user-input processing.
+
+---
+
+## 3. Extract using `indexOf()` + `slice()`
+
+```js
+let email = "deepika@gmail.com";
+
+let position = email.indexOf("@");
+
+let username = email.slice(0, position);
+let domain = email.slice(position + 1);
+```
+
+Result:
+
+```text
+username → deepika
+domain   → gmail.com
+```
+
+This demonstrates how methods work together rather than being isolated concepts.
+
+---
+
+## 4. String → Array
+
+```js
+let skills = "HTML,CSS,JavaScript";
+
+let skillList = skills.split(",");
+```
+
+Result:
+
+```js
+["HTML", "CSS", "JavaScript"]
+```
+
+---
+
+## 5. Array → String
+
+```js
+skillList.join(",");
+```
+
+Result:
+
+```text
+HTML,CSS,JavaScript
+```
+
+---
+
+# ==================================================
+
+# COMMON BEGINNER MISTAKES
+
+# ==================================================
+
+## Mistake 1 — Forgetting strings are immutable
+
+Wrong assumption:
+
+```js
+let str = "hello";
+
+str.toUpperCase();
+
+console.log(str);
+```
+
+Still:
+
+```text
+hello
+```
+
+Correct:
+
+```js
+str = str.toUpperCase();
+```
+
+---
+
+## Mistake 2 — Treating `length` as a method
+
+Wrong:
+
+```js
+str.length()
+```
+
+Correct:
+
+```js
+str.length
+```
+
+---
+
+## Mistake 3 — Assuming every method supports negative indexes
+
+Not true.
+
+```text
+slice() → yes
+at() → yes
+
+substring() → no
+charAt() → no
+indexOf() → no negative indexing
+lastIndexOf() → no negative indexing
+```
+
+---
+
+## Mistake 4 — Forgetting end is excluded
+
+```js
+"JavaScript".slice(0, 4);
+```
+
+Result:
+
+```text
+Java
+```
+
+Index `4` is not included.
+
+The rule is:
+
+> Start included, end excluded.
+
+---
+
+## Mistake 5 — Assuming `substring()` behaves like `slice()`
+
+It doesn't.
+
+```js
+str.substring(-3);
+```
+
+Negative → `0`.
+
+```js
+str.slice(-3);
+```
+
+Negative → count from the end.
+
+---
+
+## Mistake 6 — Assuming `substring()` preserves argument order
+
+It doesn't.
+
+```js
+str.substring(7, 3);
+```
+
+It swaps them.
+
+```js
+str.slice(7, 3);
+```
+
+Returns:
+
+```text
+""
+```
+
+---
+
+## Mistake 7 — Assuming `trim()` removes internal spaces
+
+It doesn't.
+
+```js
+"Hello   World".trim();
+```
+
+remains:
+
+```text
+Hello   World
+```
+
+---
+
+## Mistake 8 — Assuming `replace()` replaces everything
+
+With a string search value:
+
+```js
+"Java Java Java".replace("Java", "Python");
+```
+
+Result:
+
+```text
+Python Java Java
+```
+
+Use:
+
+```js
+replaceAll()
+```
+
+when you need all matching string occurrences.
+
+---
+
+## Mistake 9 — Forgetting `split()` creates an array
+
+```js
+let result = "A-B-C".split("-");
+```
+
+`result` is:
+
+```js
+["A", "B", "C"]
+```
+
+not a string.
+
+```js
+typeof result;
+// "object"
+```
+
+---
+
+# ==================================================
+
+# FINAL STRING CHEAT SHEET
+
+# ==================================================
+
+```text
+CASE
+toUpperCase()  → uppercase
+toLowerCase()  → lowercase
+
+
+SEARCH
+indexOf()      → first index / -1
+lastIndexOf()  → last index / -1
+includes()     → true / false
+startsWith()   → true / false
+endsWith()     → true / false
+
+
+EXTRACT
+slice()        → supports negative indexes, no swapping
+substring()    → negatives become 0, swaps arguments
+charAt()       → character / ""
+charCodeAt()   → UTF-16 number / NaN
+at()           → character / undefined, supports negative indexes
+
+
+REPLACE
+replace()      → first matching string occurrence
+replaceAll()   → all matching string occurrences
+
+
+WHITESPACE
+trim()         → both sides
+trimStart()    → beginning
+trimEnd()      → ending
+
+
+CONVERT
+split()        → String → Array
+
+
+REPEAT
+repeat()       → repeat string N times
+
+
+PADDING
+padStart()     → add at beginning
+padEnd()       → add at ending
+```
+
+---
+
+# 🧠 The 10 Rules I Would Memorize for Interviews
+
+1. **Strings are immutable.** String methods return new values rather than modifying the original string.
+
+2. **String indexes start at `0`.**
+
+3. **`slice()` supports negative indexes; `substring()` does not.**
+
+4. **`substring()` swaps start and end when start is greater than end; `slice()` does not.**
+
+5. **`indexOf()` and `lastIndexOf()` return `-1` when the value isn't found.**
+
+6. **`includes()`, `startsWith()`, and `endsWith()` return booleans.**
+
+7. **`replace()` replaces the first matching string occurrence; `replaceAll()` replaces all matching string occurrences.**
+
+8. **`trim()` removes whitespace only from the beginning and end, never from the middle.**
+
+9. **`split()` converts a string into an array, and `join()` converts an array back into a string.**
+
+10. **`at()` supports negative indexing, while `charAt()` does not.**
+
+---
+
+# Final Developer Perspective
+
+Don't try to memorize 20+ methods as isolated functions.
+
+Instead, think in terms of the **job you need to perform**:
+
+```text
+"I need to clean this."
+        ↓
+      trim()
+
+"I need to normalize this."
+        ↓
+ toUpperCase()
+ toLowerCase()
+
+"I need to find something."
+        ↓
+ indexOf()
+ includes()
+
+"I need to check the boundary."
+        ↓
+ startsWith()
+ endsWith()
+
+"I need part of this."
+        ↓
+ slice()
+
+"I need one character."
+        ↓
+ at()
+
+"I need to change something."
+        ↓
+ replace()
+ replaceAll()
+
+"I need individual pieces."
+        ↓
+ split()
+
+"I need repeated text."
+        ↓
+ repeat()
+
+"I need fixed-width formatting."
+        ↓
+ padStart()
+ padEnd()
+```
+
+That is the more useful **developer mindset**: don't ask *"Which string methods have I memorized?"*; ask *"What transformation does my data need?"*

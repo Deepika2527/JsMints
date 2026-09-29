@@ -1,6 +1,12 @@
 let name;
+let age = null;
+let roll = undefined;
 console.log(name);
 console.log(typeof(name));
+console.log(age,typeof(age));
+console.log(roll, typeof(roll));
+
+
 name = "Bonkers";
 console.log(name);
 console.log(typeof(name));

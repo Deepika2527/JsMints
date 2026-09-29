@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      console.log("abc".padStart(10, "xyz"));
+
+      console.log("Example 2");
+      let id = "7";
+
+      let invoice = "INV" + id.padStart(3, "0");
+
+      console.log(invoice);
+
+      let hour = "7";
+      let minute = "5";
+
+      //07:05
+     let time = hour.padStart(2, "0") + ":" + minute.padStart(2, "0");
+
+console.log(time);
+    </script>
+  </body>
+</html>

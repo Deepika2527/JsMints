@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>now</title>
+  </head>
+  <body>
+    <script>
+      let now = new Date();
+      console.log(now);
+       console.log(typeof now);
+      document.write(now)
+      document.write("<br>")
+      document.write(now.toString());
+
+      document.write(now.toString())
+
+     
+      now.setDate(now.getDate() + 5);
+      console.log("Prinitng", now);
+
+     now1 = new Date();
+
+     now1.setDate(now1.getDate().toString()+5)
+     console.log(now1);
+     
+    
+     
+      
+      
+      console.log("Date to string, ", now.toString());
+      console.log(typeof now.toString());
+      
+      
+      console.log("Year", now.getFullYear());
+    
+      console.log("Day", now.getDay());
+      console.log(now.getFullYear());
+      console.log(now.getMonth());
+  
+      console.log(now.getDay());
+
+      console.log(now.getHours());
+      console.log(now.getMinutes());
+      console.log(now.getSeconds());
+      console.log(now.getMilliseconds());
+    console.log("---------Now lets see how to set the values------------");
+    let date = new Date;
+    console.log(date.setDate(25));
+    //Change the date to 25, and print whatever setDate() returns."timestamp number
+    date.setDate(25)
+    console.log(date);
+    //Change the date to 25. Now print the Date object-Date representation
+
+    let date1 = new Date;
+    console.log(date1.setFullYear(2030));
+    date1.setDate(2030)
+    console.log(date1);
+    
+    
+    
+    
+        
+    </script>
+  </body>
+</html>
