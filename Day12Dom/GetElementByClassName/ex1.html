@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Registration</title>
+</head>
+
+<body>
+
+    <h1>Student Registration</h1>
+
+    <form id="studentForm">
+
+        <label>Student Name:</label>
+        <input type="text" id="studentName">
+
+        <br><br>
+
+        <label>Course:</label>
+
+        <select id="course">
+            <option value="">Select Course</option>
+            <option value="HTML">HTML</option>
+            <option value="CSS">CSS</option>
+            <option value="JavaScript">JavaScript</option>
+            <option value="Python">Python</option>
+        </select>
+
+        <br><br>
+
+        <label>Skills:</label>
+
+        <input type="checkbox" class="skill" value="HTML">
+        <label>HTML</label>
+
+        <input type="checkbox" class="skill" value="CSS">
+        <label>CSS</label>
+
+        <input type="checkbox" class="skill" value="JavaScript">
+        <label>JavaScript</label>
+
+        <br><br>
+
+        <button type="button" id="registerBtn" onclick="registerBtun()">
+            Register
+        </button>
+
+    </form>
+
+    <h2 id="message"></h2>
+
+    
+           <script>
+        // 1. Properly select all elements from the DOM
+        const nameIn = document.getElementById("studentName");
+        const course = document.getElementById("course");
+        const form = document.getElementById("studentForm");
+        const btn = document.getElementById('registerBtn');
+        const skills = document.getElementsByClassName("skill");
+        // FIX: Explicitly target the message element
+        const message = document.getElementById("message"); 
+
+        function registerBtun(){
+            let selectedSkills = "";
+
+            for(let i=0;i<skills.length;i++){
+                if(skills[i].checked){
+                    selectedSkills += skills[i].value+ " "
+
+                }
+            }
+            // 2. Output the result to the screen
+            message.innerText = "Student: " + nameIn.value + " | Course: " + course.value + " | Skills: " + (selectedSkills || "None");
+            
+            console.log(selectedSkills);
+            //  message.innerText = `Student| ${selectedSkills}- Course|${selectedSkills}-Selectedskill|${selectedSkills}
+            //  `
+               }
+
+              
+    </script>
+
+    
+
+
+
+        
+
+
+
+</body>
+</html>

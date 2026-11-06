@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Setting Values</title>
+    <style>
+        #box{
+            background-color: lavender;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+     <div id="box">
+        <h1>Welcome to DOM</h1>
+        <p style="background-color: blue;" id="para">Learning Style Manipulation</p>
+    </div>
+
+
+
+    <script>
+        box = document.getElementById('box');
+        p = document.getElementById('para')
+        // box.style.backgroundColor = "pink";
+        box.style.color = "red"
+        box.style.fontSize = "20px"
+        box.style.padding = "10px";
+        box.style.position = "absolute";
+        box.style.left= "100px";
+
+        //getting the values
+        
+        console.log(para.style.backgroundColor);
+        console.log(box.style.backgroundColor); 
+        console.log(box.style.textAlign);
+        
+        //the above backgroundcolor for the box we cant get as element.style reads inline styles, not all styles applied through external or internal CSS stylesheets.
+        console.log(getComputedStyle(box).backgroundColor);
+        console.log(getComputedStyle(box).textAlign);
+        
+        
+        
+        
+
+
+    </script>
+    
+</body>
+</html>

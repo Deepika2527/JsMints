@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+<div id="parent" class="container">
+      <h1>Hello</h1>
+      <p>Welcome to DOM</p>
+    </div>
+    <section class="st" id="scr"></section>
+
+    <script>
+      console.log(document);
+      console.log(document.body);
+      console.log(document.body.children.parent);
+      
+      console.log(document.body.children);
+      // this retuns html collection that resembles like an array
+      let result = document.body.children;
+
+      console.log(result.length); // Number of elements
+      console.log(result[0]); // First element
+      console.log(Array.isArray(result)); // false
+
+
+      console.log(document.body.childNodes);
+      // console.log(document.body);
+      console.dir(document);
+      
+    </script>
+  </body>
+</html>

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>InnerHtml Innertext textcONTENT</title>
+    <style>
+      #hed {
+        background-color: lightgoldenrodyellow;
+          }
+      #div{
+        background-color: peachpuff;
+      }
+      #sect{
+        background-color: lavender;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 style="text-align: center;background-color: linen;">Setting the content</h1>
+    <div id="hed"></div>
+    <div id="div"></div>
+    <section id="sect"></section>
+
+    <script>
+    document.write("Setting the cont")
+      h = document.getElementById("hed");
+      console.log(h);
+      h.innerText = "Hello";
+      h.innerText = `<p> this is the para in innerText </p> 
+      <span> im the span
+        <h1>In the heading inside of innerText`;
+      //innerHTML
+      div = document.getElementById("div");
+      console.log(div);
+      div.innerHTML = "Hello im using innerhtml";
+      div.innerHTML = `<p> this is the para </p> 
+      <span> im the span
+        <h1>In the heading inside of innerHtml</span>`;
+
+      // textcontent
+
+      sect = document.getElementById("sect");
+      console.log(sect);
+      sect.textContent = "Hello all";
+      sect.textContent = `<p> this is the para </p> 
+      <span> im the span
+        <h1>In the heading inside of text content`;
+    </script>
+  </body>
+</html>

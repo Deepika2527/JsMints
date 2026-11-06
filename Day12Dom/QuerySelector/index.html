@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuerySelector</title>
+</head>
+<body>
+
+    <section class="set">Section1</section>
+    
+    
+    <section class="set">Section1</section>
+    <p id="pr1" class="para">Para1</p>
+    <p id="pr2" class="para">Para2</p>
+    <p id="pr3" class="para">Para3</p>
+    <p id="pr4" class="para">Para4</p>
+    <p id="pr5" class="para">Para5</p>
+
+    <div id="div" class="divi">
+        <p>My para</p> 
+        <label for="">Name:</label>
+        <input type="text" name="" id=""> <br><br>
+        <div class="divi">
+            <p>Nesetd para</p>
+        </div>
+    </div>
+
+
+
+
+    <script>
+        let p = document.querySelector('#pr1');
+        console.log(p);
+        p.style.backgroundColor = "Red";
+        let p1 = document.getElementById('pr2');
+        console.log(p);
+        
+
+
+
+        let section = document.querySelector('.set');
+       console.log(section);
+       
+
+    //    the output of querySector and clas or id would be same but the way we declare is different.and also query selctor can be used with all diffrent types of selectors
+
+    let divs = document.querySelector("#div");
+    divs.style.border = "1px solid black";
+
+    let divi = document.querySelector(".divi p");
+    console.log(divi);
+    divi.style.backgroundColor ="grey"
+
+
+    //notice here  means descand selector and although we applied the DesSelector this will not work as queryselector selector will selct the first one so he next p woont be selected
+    
+
+
+        
+    </script>
+</body>
+</html>

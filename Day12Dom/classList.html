@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+    width: 200px;
+    padding: 20px;
+}
+
+.active {
+    background-color: lightblue;
+}
+
+.highlight {
+    border: 2px solid blue;
+}
+
+.success {
+    color: green;
+}
+.added{
+    border-radius: 20px;
+}
+    </style>
+</head>
+<body>
+    <div class="box active highlight" id="bx">hello</div>
+
+
+
+    <script>
+        clslst = document.getElementById('bx')
+        console.log(clslst.classList);
+        console.log(clslst.className);
+
+        //earlier we have only box active highlight now i created suceess cls and want to add using classList.This will not create duplicates
+        clslst.classList.add("success")
+
+         console.log(clslst.classList);
+
+        //  toggle if the classlis is there it will add else remove
+
+       clslst.classList.toggle("added")
+      console.log(clslst.classList.contains("added"));
+      
+
+        
+        
+    </script>
+    
+</body>
+</html>

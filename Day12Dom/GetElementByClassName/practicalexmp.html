@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="box">Box 1</div>
+    <div class="box">Box 2</div>
+    <div class="box">Box 3</div>
+    <div class="box">Box 4</div>
+
+    <div class="bx">HTML</div>
+    <div class="bx">CSS</div>
+    <div class="bx">JavaScript</div>
+    <div class="bx">Python</div>
+
+    <script>
+      let box = document.getElementsByClassName("box");
+      console.log(box);
+
+      for (let i = 0; i < box.length; i++) {
+        if (i == 0) {
+          box[i].style.backgroundColor = "pink";
+        }
+        if (i == 1) {
+          box[i].style.backgroundColor = "red";
+        }
+        if (i == 2) {
+          box[i].style.backgroundColor = "yellow";
+        }
+        if (i == 3) {
+          box[i].style.backgroundColor = "green";
+        }
+      }
+
+      for (let i = 0; i < box.length; i++) {
+        if (i % 2 === 0) {
+          box[i].style.fontSize = "20px";
+          box[i].style.color = "darkBlue";
+        } else {
+          box[i].style.textAlign = "Center";
+          box[i].style.fontSize = "20px";
+        }
+      }
+
+
+
+      let bx = document.getElementsByClassName("bx");
+
+for(let i = 0; i < bx.length; i++){
+
+    if(bx[i].innerText === "HTML"){
+        bx[i].style.border = "5px solid orange";
+    }
+
+    if(bx[i].innerText === "CSS"){
+        bx[i].style.border = "4px dashed darkblue";
+    }
+
+    if(bx[i].innerText === "JavaScript"){
+        bx[i].style.border = "6px dotted pink";
+    }
+
+    if(bx[i].innerText === "Python"){
+        bx[i].style.border = "3px double green";
+    }
+}
+    </script>
+  </body>
+</html>

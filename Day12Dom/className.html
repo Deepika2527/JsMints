@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClassName</title>
+</head>
+<body>
+    <div id="container" class="box"></div>
+    <div id="ele"></div>
+    <div id="demo" class="box active highlight"></div>
+
+
+    <script>
+        box = document.getElementById('container');
+        console.log(box.className);
+
+        box.className = "updated"
+        console.log(box.className);
+        
+
+        ele = document.getElementById('ele');
+        console.log(ele.className);
+        ele.className = "new"
+        console.log(ele.className);
+
+        element  = document.getElementById('demo')
+        console.log(element.className);
+        element.className = "New";
+        console.log(element.className);
+        
+        element.className = "New class";
+        console.log(element.className);
+        element.className = element.className + "updatedcls"
+        console.log(element.className);
+        
+
+
+        
+        
+        
+        
+        
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClassName</title>
+</head>
+<body>
+
+
+    <div class="box active">One</div>
+
+<div class="box active box">Two</div>
+
+<div class="active">Three</div>
+<div class="box">Four</div>
+
+
+
+
+<script>
+    let bx = document.getElementsByClassName("box active");
+    console.log(bx);
+
+    bx[0].style.color = "red"
+    
+
+    for(let j=0;j<bx.length;j++){
+        bx[j].style.backgroundColor = "pink";
+        bx[j].style.padding = '10px';
+          bx[j].style.border = '1px solid black'
+          bx[j].style.margin = "2px"
+    }
+</script>
+    
+</body>
+</html>

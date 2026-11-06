@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>usingboth seletors</title>
+</head>
+<body>
+
+
+<p id="para" class="mypara">para1</p>  
+
+
+
+<script>
+    // let p_id = document.getElementById("para")
+    // console.log(p_id);
+    // p_id.style.fontSize = "27px"
+
+    // let p_cls = document.getElementsByClassName("mypara");
+    // console.log(p_cls);
+    // p_cls[0].style.color = "purple"
+
+    let ele = document.querySelector("#para.mypara")
+console.log(ele);
+ele.style.border = "1px solid black";
+
+//space will not work remeber when we are combing 2 selectors at the same time
+
+
+//   | Selector | Meaning |
+// |---|---|
+// | `#para` | element with ID `para` |
+// | `.mypara` | element with class `mypara` |
+// | `#para.mypara` | **same element** has both |
+// | `#para .mypara` | `.mypara` is **inside** `#para` |
+// | `#para > .mypara` | `.mypara` is a **direct child** of `#para` |  // 
+    
+    
+</script>
+</body>
+</html>

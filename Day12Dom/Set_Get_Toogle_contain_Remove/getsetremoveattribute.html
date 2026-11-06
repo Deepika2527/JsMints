@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img src="https://images.pexels.com/photos/39263955/pexels-photo-39263955.jpeg" alt="" id="img" height="100px" title="image">
+
+
+
+    <script>
+        img = document.getElementById("img")
+        console.log(img.getAttribute('height'));
+        console.log(img.getAttribute("width"));
+        img.setAttribute("style", "border: 5px solid black; padding: 10px; margin: 10px;")
+        // img.setAttribute("style","padding:10px;")
+        // img.setAttribute("style","margin:10px;")
+        //if you add like theis then it will override the previous style attribute. So to add multiple styles you can use the below method.
+        console.log(img.removeAttribute("title"))
+        console.log(img.hasAttribute("style"))   
+        console.log(img);
+             
+        
+    </script>
+    
+</body>
+</html>

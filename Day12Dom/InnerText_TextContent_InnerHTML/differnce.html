@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Difference</title>
+</head>
+<body>
+
+    <div id="container">
+    <h1>Welcome Students</h1>
+
+    <p>Learn JavaScript</p>
+
+    <p style="display:none">
+        Hidden Content
+    </p>
+</div>
+
+
+
+<script>
+    container = document.getElementById("container");
+
+    console.log(container.innerText);
+
+    
+    console.log(container.innerHTML);
+      
+    console.log(container.textContent);
+
+
+//     Property	Get	              Set
+// innerHTML	HTML + content	 Parses HTML
+// innerText	Rendered text	 Sets text
+// textContent	All text	     Sets text
+      
+// One simple rule to remember:
+// - innerHTML → Works with HTML markup.
+// - innerText → Works with visible text.
+// - textContent → Works with all text content.
+
+    
+    
+</script>
+    
+</body>
+</html>
